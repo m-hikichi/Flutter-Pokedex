@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/colors.dart';
 import 'package:pokedex/pokemon.dart';
 
+const displayDigits = 3;
+
 class PokemonList extends StatelessWidget {
   const PokemonList({super.key});
 
@@ -26,15 +28,36 @@ Widget pokemonIndex(Pokemon pokemon) {
       color: normalTypeColor,
       borderRadius: BorderRadius.circular(16),
     ),
-    child: Row(
+    child: Stack(
       children: [
-        Text(
-          pokemon.name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 30,
+        Align(
+          alignment: Alignment.centerRight,
+          child: Stack(
+            children: [
+              Image.asset(
+                "images/pokeball-icon-transparent.jpg",
+                opacity: const AlwaysStoppedAnimation(0.2),
+              ),
+            ],
           ),
-        )
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "No.${pokemon.id.toString().padLeft(displayDigits, "0")}",
+                style: const TextStyle(color: Colors.white),
+              ),
+              Text(
+                pokemon.name,
+                style: const TextStyle(color: Colors.white, fontSize: 30),
+              )
+            ],
+          ),
+        ),
       ],
     ),
   );
