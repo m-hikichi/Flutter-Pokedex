@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/colors.dart';
 import 'package:pokedex/pokemon.dart';
 
-const displayDigits = 3;
-
 class PokemonList extends StatelessWidget {
   const PokemonList({super.key});
 
@@ -11,8 +9,12 @@ class PokemonList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
-      child: ListView.builder(
+      child: GridView.builder(
         itemCount: pokemonList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 3,
+        ),
         itemBuilder: (context, index) => pokemonIndex(pokemonList[index]),
       ),
     );
@@ -38,24 +40,15 @@ Widget pokemonIndex(Pokemon pokemon) {
                 "images/pokeball-icon-transparent.jpg",
                 opacity: const AlwaysStoppedAnimation(0.2),
               ),
+              Image.asset("images/${pokemon.id}.png"),
             ],
           ),
         ),
         Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "No.${pokemon.id.toString().padLeft(displayDigits, "0")}",
-                style: const TextStyle(color: Colors.white),
-              ),
-              Text(
-                pokemon.name,
-                style: const TextStyle(color: Colors.white, fontSize: 30),
-              )
-            ],
+          alignment: Alignment.topLeft,
+          child: Text(
+            pokemon.name,
+            style: const TextStyle(color: Colors.white, fontSize: 25),
           ),
         ),
       ],
