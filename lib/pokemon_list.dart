@@ -2,20 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/colors.dart';
 import 'package:pokedex/pokemon.dart';
 
-class PokemonList extends StatelessWidget {
-  const PokemonList({super.key});
+class PokemonList extends StatefulWidget {
+  const PokemonList({super.key, required this.pokemonList});
 
+  final List<Pokemon> pokemonList;
+
+  @override
+  State<PokemonList> createState() => _PokemonListState();
+}
+
+class _PokemonListState extends State<PokemonList> {
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
       child: GridView.builder(
-        itemCount: pokemonList.length,
+        itemCount: widget.pokemonList.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 4 / 3,
         ),
-        itemBuilder: (context, index) => pokemonIndex(pokemonList[index]),
+        itemBuilder: (context, index) =>
+            pokemonIndex(widget.pokemonList[index]),
       ),
     );
   }
