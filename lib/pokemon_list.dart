@@ -54,11 +54,44 @@ Widget pokemonIndex(Pokemon pokemon) {
         ),
         Align(
           alignment: Alignment.topLeft,
-          child: Text(
-            pokemon.name,
-            style: GoogleFonts.delaGothicOne(
-              textStyle: const TextStyle(color: Colors.white, fontSize: 25),
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                pokemon.name,
+                style: GoogleFonts.delaGothicOne(
+                  textStyle: const TextStyle(color: Colors.white, fontSize: 25),
+                ),
+              ),
+              Container(
+                width: 90,
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(128, 128, 128, 128),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text(
+                  pokemon.type1,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+              pokemon.type2 != null
+                  ? Container(
+                      width: 90,
+                      margin: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(128, 128, 128, 128),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Text(
+                        pokemon.type2 ?? "",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ],
           ),
         ),
       ],
