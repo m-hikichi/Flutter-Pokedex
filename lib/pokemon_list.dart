@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/pokemon.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PokemonList extends StatefulWidget {
   const PokemonList({super.key, required this.pokemonList});
@@ -55,7 +56,9 @@ Widget pokemonIndex(Pokemon pokemon) {
           alignment: Alignment.topLeft,
           child: Text(
             pokemon.name,
-            style: const TextStyle(color: Colors.white, fontSize: 25),
+            style: GoogleFonts.delaGothicOne(
+              textStyle: const TextStyle(color: Colors.white, fontSize: 25),
+            ),
           ),
         ),
       ],
