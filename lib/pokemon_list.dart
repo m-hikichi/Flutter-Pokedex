@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/colors.dart';
 import 'package:pokedex/pokemon.dart';
 
 class PokemonList extends StatefulWidget {
@@ -35,7 +34,7 @@ Widget pokemonIndex(Pokemon pokemon) {
     padding: const EdgeInsets.all(8),
     margin: const EdgeInsets.all(8),
     decoration: BoxDecoration(
-      color: normalTypeColor,
+      color: pokemon.type1Color,
       borderRadius: BorderRadius.circular(16),
     ),
     child: Stack(
